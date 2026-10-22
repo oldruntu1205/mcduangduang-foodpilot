@@ -2,6 +2,8 @@
 
 > 把五个人的嘴，协调成一张能下单的单子。
 
+> **参赛说明**：本仓库为麦当劳程序员节创意开发大赛参赛作品，由参赛者独立开发，**非麦当劳官方产品**。项目输出仅供参考，不构成医疗、营养或其他专业建议；餐品信息、价格及供应状态以麦当劳官方渠道的实时结果为准。参赛声明见 [CONTEST_DECLARATION.md](CONTEST_DECLARATION.md)（官方原文，未作任何修改）。
+
 多人点麦当劳的真实卡点不是「吃什么」，是**协调**：5 个人、160 元预算、一个不吃牛肉、一个不能吃辣、一个要控热量。谁来算？算完谁改？改完谁重算？
 
 FoodPilot 把这件事做成一个**可解释、可调整的 Agent**，而不是又一个"帮你推荐汉堡"的对话壳。
@@ -253,6 +255,7 @@ python meal_solver.py --menu ../demo/menu_demo.json \
 
 ```
 SKILL.md                      Agent 行为规范（四阶段工作流 + 红线）
+CONTEST_DECLARATION.md        参赛声明（赛事官方原文，未作任何修改）
 scripts/normalize_menu.py     菜单归一化（字段洗版 + 品类/肉类/辣度识别）
 scripts/meal_solver.py        求解器 Python 版（枚举 + 三目标 + 理由生成 + 校验）
 scripts/solver_core.js        求解器 JS 版（唯一源码，页面内嵌 / Node 测试共用同一份）
