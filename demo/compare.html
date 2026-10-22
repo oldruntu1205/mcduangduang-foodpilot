@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FoodPilot 方案对比 · 5 人 ¥160</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F7F5; --card:#FFFFFF; --panel:#FCFCFA; --line:#E5E3DD; --line-soft:#F0EEE9;
+  --text:#1F1F1D; --text2:#3C3B37; --muted:#6B6A64; --faint:#9A9992;
+  --cA:#5F5E5A; --cB:#A32D2D; --cC:#0F6E56;
+  --chip-bg:#FFFFFF; --track:#F2F1EC;
+  --con-bg:#FCEBEB; --con-fg:#A32D2D; --con-none-bg:#F2F1EC; --con-none-fg:#8A8983;
+  --warn-bg:#FAEEDA; --warn-fg:#633806; --warn-line:#FAC775;
+  --err-bg:#FCEBEB; --err-fg:#791F1F;
+  --dessert:#D98324; --shadow:rgba(0,0,0,.07);
+  --btn-bg:#FFFFFF; --btn-line:#E5E3DD; --btn-active:#1F1F1D; --btn-active-fg:#FFFFFF;
+}
+html[data-theme="dark"]{
+  --bg:#13151A; --card:#1D1F26; --panel:#22252D; --line:#2E313A; --line-soft:#262A32;
+  --text:#ECEBE7; --text2:#D2D1CB; --muted:#9A9992; --faint:#7B7A75;
+  --cA:#A8A79F; --cB:#E28080; --cC:#4FB99A;
+  --chip-bg:#22252D; --track:#2A2E37;
+  --con-bg:#3A2323; --con-fg:#F09595; --con-none-bg:#2A2E37; --con-none-fg:#8A8983;
+  --warn-bg:#3A2E14; --warn-fg:#FAC775; --warn-line:#5A4520;
+  --err-bg:#3A2323; --err-fg:#F7C1C1;
+  --dessert:#E8A33D; --shadow:rgba(0,0,0,.4);
+  --btn-bg:#22252D; --btn-line:#2E313A; --btn-active:#ECEBE7; --btn-active-fg:#13151A;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
+  transition:background .35s,color .35s}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+.wrap{position:relative;z-index:1;max-width:1260px;margin:0 auto;padding:40px 28px 64px}
+
+.topbtns{position:fixed;top:18px;right:18px;z-index:20;display:flex;gap:8px}
+.tbtn{height:40px;padding:0 14px;border-radius:12px;border:1px solid var(--btn-line);
+  background:var(--btn-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;
+  gap:7px;font-size:12.5px;font-family:inherit;transition:color .2s,border-color .2s,transform .2s}
+.tbtn:hover{color:var(--text);transform:translateY(-1px)}
+.tbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="light"] .icon-moon{display:none}
+html[data-theme="dark"] .icon-sun{display:none}
+html[data-present="on"] #presentbtn{background:var(--btn-active);color:var(--btn-active-fg);
+  border-color:var(--btn-active)}
+
+.hero{margin-bottom:30px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.brand h1{font-size:20px;font-weight:600;letter-spacing:-.2px}
+.brand .tag{font-size:12px;color:var(--muted);border:1px solid var(--line);
+  border-radius:99px;padding:2px 10px;background:var(--chip-bg)}
+.scene{font-size:15px;color:var(--text2);margin-bottom:14px}
+.scene b{font-weight:600;color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;background:var(--chip-bg);border:1px solid var(--line);
+  border-radius:99px;padding:4px 11px;color:var(--text2);transition:border-color .25s,background .25s}
+.chip i{font-style:normal;color:var(--cB);font-weight:500}
+.chip.hit{border-color:var(--cB)}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:16px 18px;margin-top:18px}
+.panel-title{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.5px;margin-bottom:12px}
+.ctrls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text2);
+  border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:7px 12px;
+  cursor:pointer;user-select:none;transition:border-color .2s,background .2s,color .2s}
+.sw:hover{border-color:var(--muted)}
+.sw input{appearance:none;width:30px;height:17px;border-radius:99px;background:var(--track);
+  position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;margin:0}
+.sw input::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;
+  border-radius:50%;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .2s}
+.sw input:checked{background:var(--cB)}
+.sw input:checked::after{transform:translateX(13px)}
+.sw.on{border-color:var(--cB);color:var(--text)}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-left:4px}
+.seg button{border:0;background:var(--panel);color:var(--muted);font-family:inherit;font-size:12.5px;
+  padding:8px 14px;cursor:pointer;transition:background .2s,color .2s;
+  border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--btn-active);color:var(--btn-active-fg)}
+.seg .lb{border:0;background:transparent;cursor:default;color:var(--faint);padding-right:6px}
+
+.sec-title{font-size:12.5px;font-weight:600;color:var(--muted);letter-spacing:.6px;
+  margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+.sec-title .hint{font-weight:400;letter-spacing:0;color:var(--faint);font-size:11.5px}
+
+.metrics{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.mrow{display:grid;grid-template-columns:88px 1fr;align-items:center;gap:16px;
+  padding:10px 0;border-bottom:1px dashed var(--line-soft)}
+.mrow:last-child{border-bottom:0}
+.mlabel{font-size:12.5px;color:var(--muted)}
+.mbars{display:flex;flex-direction:column;gap:7px}
+.mbar{display:flex;align-items:center;gap:10px}
+.mtrack{flex:1;height:20px;background:var(--track);border-radius:5px;overflow:hidden}
+.mfill{height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.8,.3,1)}
+.mval{font-size:12.5px;font-variant-numeric:tabular-nums;width:108px;flex-shrink:0;color:var(--text2)}
+.mtag{font-size:11px;font-weight:600;width:14px;flex-shrink:0}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+@media(max-width:1020px){.plans{grid-template-columns:1fr}}
+.fade{animation:fadein .32s ease-out}
+@keyframes fadein{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.plan:hover{box-shadow:0 6px 26px var(--shadow);transform:translateY(-2px)}
+.plan-head{padding:18px 20px 14px;border-bottom:1px solid var(--line-soft)}
+.plan-name{font-size:16px;font-weight:600;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.plan-desc{font-size:12.5px;color:var(--muted);margin-top:5px;min-height:34px}
+.plan-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;
+  border-radius:5px;margin-top:9px}
+
+.price-box{padding:16px 20px 14px;border-bottom:1px solid var(--line-soft);background:var(--panel)}
+.big{font-size:30px;font-weight:600;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.big small{font-size:14px;font-weight:400;color:var(--muted);margin-left:2px}
+.subrow{display:flex;gap:18px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.subrow b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+.stackbox{padding:14px 20px 16px;border-bottom:1px solid var(--line-soft);background:var(--panel)}
+.stack-head{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12px;color:var(--muted);margin-bottom:8px}
+.stack-head b{font-size:13px;color:var(--text);font-variant-numeric:tabular-nums}
+.stack{display:flex;height:14px;border-radius:4px;overflow:hidden;background:var(--track)}
+.seg{height:100%}
+.seg.main{background:var(--pc)}
+.seg.share{background:var(--pc);opacity:.42}
+.seg.dessert{background:var(--dessert)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:11px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.legend i.lm{background:var(--pc)}
+.legend i.ls{background:var(--pc);opacity:.42}
+.legend i.ld{background:var(--dessert)}
+.legend em{font-style:normal;color:var(--text2);font-variant-numeric:tabular-nums}
+.nodessert{font-size:11px;color:var(--faint)}
+
+.people{padding:6px 20px 4px;flex:1}
+.prow{padding:13px 0;border-bottom:1px solid var(--line-soft)}
+.prow:last-child{border-bottom:0}
+.pwho{display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap}
+.pname{font-size:13px;font-weight:600}
+.pcon{font-size:11px;color:var(--con-fg);background:var(--con-bg);border-radius:4px;padding:1px 6px}
+.pcon.none{color:var(--con-none-fg);background:var(--con-none-bg)}
+.pitem{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pdish{font-size:13px;color:var(--text)}
+.pnum{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.preason{font-size:11.5px;color:var(--faint);line-height:1.5;margin-top:4px;
+  padding-left:9px;border-left:2px solid var(--line-soft)}
+
+.shared{padding:12px 20px;background:var(--panel);border-top:1px solid var(--line-soft);font-size:12.5px}
+.shared .sl{color:var(--muted);margin-bottom:3px}
+.shared .sv{color:var(--text2)}
+
+.alts{border-top:1px solid var(--line-soft);background:var(--panel)}
+.alts summary{list-style:none;cursor:pointer;padding:12px 20px;font-size:12.5px;
+  color:var(--muted);display:flex;align-items:center;gap:8px;user-select:none;transition:color .2s}
+.alts summary:hover{color:var(--text)}
+.alts summary::-webkit-details-marker{display:none}
+.alts summary::before{content:"";width:0;height:0;flex-shrink:0;
+  border-left:5px solid currentColor;border-top:4px solid transparent;
+  border-bottom:4px solid transparent;transition:transform .2s}
+.alts[open] summary::before{transform:rotate(90deg)}
+.alts[open] summary{color:var(--text)}
+.alt-body{padding:0 20px 16px}
+.alt-group{padding:9px 0;border-bottom:1px dashed var(--line-soft)}
+.alt-group:last-child{border-bottom:0}
+.alt-who{font-size:11.5px;color:var(--muted);margin-bottom:5px}
+.alt-who b{color:var(--text2);font-weight:600}
+.alt-item{display:flex;justify-content:space-between;gap:8px;font-size:12px;
+  padding:3px 0 3px 10px;color:var(--text2)}
+.alt-item .d{font-variant-numeric:tabular-nums;color:var(--faint);white-space:nowrap}
+.alt-item .up{color:var(--cB)}
+.alt-item .down{color:var(--cC)}
+
+.checks{margin:0 20px 18px;padding:11px 13px;border-radius:10px;font-size:11.5px;line-height:1.6}
+.checks.warn{background:var(--warn-bg);color:var(--warn-fg)}
+.checks.err{background:var(--err-bg);color:var(--err-fg)}
+.checks:empty{display:none}
+.plan-err{margin:0 20px 18px;padding:12px 14px;border-radius:10px;font-size:12.5px;
+  background:var(--err-bg);color:var(--err-fg)}
+
+.why{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.why h3{font-size:14px;font-weight:600;margin-bottom:12px}
+.why ol{margin-left:18px;font-size:13.5px;color:var(--text2)}
+.why li{margin-bottom:7px}
+.why code{background:var(--track);padding:1px 6px;border-radius:4px;font-size:12.5px;
+  font-family:ui-monospace,Consolas,monospace}
+.why p{font-size:13px;color:var(--muted);margin-top:14px}
+.concl{display:flex;flex-direction:column;gap:8px}
+.concl div{font-size:13.5px;color:var(--text2);background:var(--panel);border:1px solid var(--line-soft);
+  border-radius:9px;padding:10px 14px}
+
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--faint);line-height:1.7}
+.dev{margin-top:10px;font-size:11px;color:var(--faint);font-family:ui-monospace,Consolas,monospace}
+
+/* ---- 演示模式：投影上后排要看得见，所以整体放大并砍掉次要信息 ---- */
+html[data-present="on"] body{zoom:1.18}
+html[data-present="on"] .wrap{max-width:1080px;padding-top:64px}
+html[data-present="on"] footer{display:none}
+html[data-present="on"] .sec-title{margin:26px 0 12px}
+html[data-present="on"] .plan-desc{min-height:0}
+</style></head><body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="topbtns">
+  <button class="tbtn" id="presentbtn" type="button" title="投影演示时放大字号"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/>
+<path d="M12 16v4M8.5 20h7"/></svg><span>演示模式</span></button>
+  <button class="tbtn" id="themebtn" type="button" aria-label="切换日夜模式" title="切换日夜模式"><svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/>
+<path d="M12 2.6v2.4M12 19v2.4M2.6 12h2.4M19 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3L17 7M7 17l-1.7 1.7"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8z"/></svg></button>
+</div>
+<div class="wrap">
+
+<div class="hero">
+  <div class="brand"><h1>麦duangduang FoodPilot</h1><span class="tag">多人配餐协调</span></div>
+  <div class="scene"><b>5 人</b> · 总预算 <b>¥160</b> ·
+    三套方案来自三个不同目标函数，不是同一个算法换三个标题</div>
+  <div class="chips" id="chips"></div>
+
+  <div class="panel">
+    <div class="panel-title">改需求，立刻重算 —— 不用重跑一遍对话</div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+</div>
+
+<div class="sec-title">一眼看差异 <span class="hint" id="fcount"></span></div>
+<div id="metrics"></div>
+
+<div class="sec-title">逐人明细与取舍理由</div>
+<div class="plans" id="plans"></div>
+
+<div class="sec-title">怎么选</div>
+<div class="why"><h3>结论（脚本自动生成，随开关实时更新）</h3><div class="concl" id="concl"></div></div>
+
+<div class="sec-title">为什么三套不一样</div>
+<div class="why">
+  <h3>不是调权重，是换目标</h3>
+  <ol>
+    <li><b>方案 A</b> 目标函数是 <code>min 总价</code>，附带"至少 3 种主餐"的下限，
+      防止退化成五个人全吃同一款。所以它最便宜，但会有人同款。</li>
+    <li><b>方案 B</b> 目标函数是 <code>max 主餐种类</code>，同种类下取便宜的。
+      它用"多样性"换钱，所以最贵。</li>
+    <li><b>方案 C</b> 目标函数是 <code>min 整桌热量</code>，低卡名额加权给有热量限制的人，
+      并且不给低卡方案配甜点。它牺牲种类压热量。</li>
+  </ol>
+  <p>热量堆叠条里<b>甜点单独用一种颜色</b>，就是为了让最后这条决策可见——
+    同样五个人，配一份麦旋风就是 280kcal，占整桌的一成。C 方案直接不配。</p>
+</div>
+
+<footer>数据来源：首屏为 meal_solver.py 单次输出，交互重算由页面内嵌的同源求解器完成；两者启动时比对一次，不一致会在此处告警。演示菜单 18 项（离线快照）。生成时间 2026-10-22 13:13。<div class="dev" id="dev"></div></footer>
+</div>
+<script>const MENU={"items": [{"code": "9900006233", "name": "大堡口福四件套(双层脆鸡堡)", "price": 34.9, "kcal": 880, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": false, "is_combo": true}, {"code": "9900006234", "name": "巨无霸四件套", "price": 39.9, "kcal": 980, "kcal_source": "api", "category": "combo", "meat": "beef", "spicy": false, "is_combo": true}, {"code": "9900006235", "name": "麦辣鸡腿堡套餐", "price": 36.9, "kcal": 950, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": true, "is_combo": true}, {"code": "9900006236", "name": "板烧鸡腿堡套餐", "price": 36.5, "kcal": 900, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": false, "is_combo": true}, {"code": "9900006241", "name": "巨无霸", "price": 25.5, "kcal": 550, "kcal_source": "api", "category": "main", "meat": "beef", "spicy": false, "is_combo": false}, {"code": "9900006242", "name": "双层吉士堡", "price": 23.0, "kcal": 450, "kcal_source": "api", "category": "main", "meat": "beef", "spicy": false, "is_combo": false}, {"code": "9900006243", "name": "麦辣鸡腿堡", "price": 24.5, "kcal": 520, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": true, "is_combo": false}, {"code": "9900006244", "name": "板烧鸡腿堡", "price": 24.0, "kcal": 470, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006245", "name": "麦香鱼", "price": 18.0, "kcal": 340, "kcal_source": "api", "category": "main", "meat": "fish", "spicy": false, "is_combo": false}, {"code": "9900006246", "name": "脆鸡排蛋堡", "price": 16.0, "kcal": 400, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006247", "name": "那么大鸡排", "price": 22.0, "kcal": 480, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006251", "name": "中薯条", "price": 11.5, "kcal": 340, "kcal_source": "api", "category": "side", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006252", "name": "麦乐鸡(5块)", "price": 13.5, "kcal": 230, "kcal_source": "api", "category": "side", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006253", "name": "玉米杯", "price": 9.0, "kcal": 120, "kcal_source": "api", "category": "veg", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006254", "name": "蔬菜沙拉", "price": 12.0, "kcal": 90, "kcal_source": "api", "category": "veg", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006255", "name": "可口可乐(中)", "price": 9.0, "kcal": 150, "kcal_source": "api", "category": "drink", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006256", "name": "无糖可乐(中)", "price": 9.0, "kcal": 0, "kcal_source": "api", "category": "drink", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006257", "name": "麦旋风(奥利奥)", "price": 13.0, "kcal": 280, "kcal_source": "api", "category": "dessert", "meat": "unknown", "spicy": false, "is_combo": false}], "warnings": [], "stats": {"count": 18, "main_like": 11}};
+const PEOPLE_INIT=[{"name": "王磊", "avoid_meats": ["beef"], "no_spicy": false, "kcal_max": null}, {"name": "李婷", "avoid_meats": [], "no_spicy": true, "kcal_max": null}, {"name": "张敏", "avoid_meats": [], "no_spicy": false, "kcal_max": 600}, {"name": "陈昊", "avoid_meats": [], "no_spicy": false, "kcal_max": null}, {"name": "赵宇", "avoid_meats": [], "no_spicy": false, "kcal_max": null}];
+const BUDGET_INIT=160.0;
+const BUDGET_OPTS=[140, 160, 200];
+const BASELINE={"A": {"total": 117.5, "unique_mains": 3, "total_kcal": 2480}, "B": {"total": 145.5, "unique_mains": 5, "total_kcal": 2880}, "C": {"total": 127.5, "unique_mains": 3, "total_kcal": 2190}};
+/*
+ * solver_core.js —— FoodPilot 求解器（浏览器 / Node 双用）
+ *
+ * 逐函数对应 scripts/meal_solver.py。改任何一边都必须同步另一边，
+ * 然后用 scripts/test_parity.js 跑一次等价性验证：
+ *     node scripts/test_parity.js
+ *
+ * 为什么允许存在两份实现：
+ * 页面要做到「双击即开、断网可用、点开关立刻重算」，就不能依赖本地服务。
+ * 代价是算法有两份，所以用 parity 测试把漂移挡在交付前。
+ */
+
+const MAIN_CATS = ['combo', 'main'];
+const SHARE_CATS = ['side', 'drink', 'dessert', 'veg'];
+const MEAT_CN = { beef: '牛肉', chicken: '鸡肉', fish: '鱼肉', pork: '猪肉', veg: '素' };
+const PLAN_VAR = { A: '--cA', B: '--cB', C: '--cC' };
+
+const STRATEGIES = [
+  {
+    id: 'A', name: '最省钱', tagline: '压住总价，但至少保住 3 种主餐',
+    share_reserve: .22, share_count: 3, min_unique: 3,
+    prefer: ['side', 'veg', 'drink', 'dessert']
+  },
+  {
+    id: 'B', name: '最不重样', tagline: '五个人吃到尽量不同的主餐',
+    share_reserve: .20, share_count: 4, min_unique: 1,
+    prefer: ['veg', 'side', 'drink', 'dessert']
+  },
+  {
+    id: 'C', name: '最低热量', tagline: '整桌摄入最小，低卡的人优先满足，不配甜点',
+    share_reserve: .26, share_count: 3, min_unique: 3,
+    prefer: ['veg', 'drink', 'side']
+  }
+];
+
+const r2 = v => Math.round(v * 100) / 100;
+
+function allowed(it, p) {
+  if (p.avoid_meats.includes(it.meat)) return false;
+  if (p.no_spicy && it.spicy) return false;
+  if (p.kcal_max && it.kcal > p.kcal_max) return false;
+  return true;
+}
+
+/* 只用于给候选排序（决定进枚举的前 K 项），不决定最终结果 */
+function preScore(it, p, st, per) {
+  const ratio = per ? it.price / per : 1;
+  let s = -Math.abs(ratio - .9);
+  if (p.kcal_max) s += .5 * (1 - Math.abs(p.kcal_max * .8 - it.kcal) / Math.max(p.kcal_max, 1));
+  if (st.id === 'C') s -= it.kcal / 1000;
+  if (st.id === 'A') s -= it.price / 50;
+  return s;
+}
+
+function objective(combo, shared, budget, st, people) {
+  const codes = combo.map(i => i.code);
+  const uniq = new Set(codes).size;
+  if (uniq < st.min_unique) return -1e9;
+
+  const total = combo.reduce((s, i) => s + i.price, 0)
+    + shared.reduce((s, i) => s + i.price, 0);
+  // 有热量上限的人，其主餐热量加权
+  const mainKcal = combo.reduce((s, i, k) => s + i.kcal * (people[k].kcal_max ? 1.6 : 1), 0);
+  const kcal = mainKcal + shared.reduce((s, i) => s + i.kcal, 0);
+
+  const cnt = {};
+  codes.forEach(c => cnt[c] = (cnt[c] || 0) + 1);
+  const rep = Math.max(0, ...Object.values(cnt));
+
+  if (st.id === 'A') return -total;
+  if (st.id === 'B') return uniq * 1000 - total;
+  return -kcal - rep * 40 - total * .1;
+}
+
+function pickShares(pool, left, target, st, exclude) {
+  const key = st.id === 'C'
+    ? ((a, b) => a.kcal - b.kcal || a.price - b.price)
+    : ((a, b) => a.price - b.price || a.kcal - b.kcal);
+  const picked = [], seen = new Set();
+
+  for (const cat of st.prefer) {
+    if (picked.length >= target) break;
+    const cands = pool
+      .filter(i => i.category === cat && !exclude.has(i.code) && !seen.has(i.code))
+      .sort(key);
+    for (const it of cands) {
+      if (it.price > left) continue;
+      picked.push(it); seen.add(it.code); left = r2(left - it.price); break;
+    }
+  }
+  if (left > 0 && picked.length < target) {
+    const rest = pool
+      .filter(i => SHARE_CATS.includes(i.category) && !exclude.has(i.code)
+        && !seen.has(i.code) && i.price <= left)
+      .sort(key);
+    for (const it of rest) {
+      if (picked.length >= target || it.price > left) break;
+      picked.push(it); seen.add(it.code); left = r2(left - it.price);
+    }
+  }
+  return [picked, r2(left)];
+}
+
+function product(lists) {
+  let res = [[]];
+  for (const l of lists) {
+    const next = [];
+    for (const r of res) for (const x of l) next.push(r.concat([x]));
+    res = next;
+  }
+  return res;
+}
+
+function explain(planId, item, p, cands, others, budget, n) {
+  const parts = [], hits = [];
+  if (p.avoid_meats.length) hits.push('避开' + p.avoid_meats.map(m => MEAT_CN[m] || m).join('/'));
+  if (p.no_spicy) hits.push('不辣');
+  if (p.kcal_max) hits.push(item.kcal + 'kcal 在 ' + p.kcal_max + ' 以内');
+  if (hits.length) parts.push(hits.join('、') + '，该店只筛出 ' + cands.length + ' 项可选');
+
+  if (planId === 'A') {
+    const cheap = cands.reduce((a, b) => a.price < b.price ? a : b);
+    if (cheap.code === item.code) {
+      parts.push('他名下最低价 ¥' + item.price.toFixed(2) + '，压总价就靠这一档');
+    } else {
+      const uniq = new Set(others.map(o => o.code).concat([item.code])).size;
+      parts.push('比最低价的' + cheap.name + '贵 ¥' + (item.price - cheap.price).toFixed(2)
+        + '，用来凑够 ' + uniq + ' 种不同主餐，避免整桌一个味');
+    }
+  } else if (planId === 'B') {
+    const codes = new Set(others.map(o => o.code));
+    if (!codes.has(item.code)) parts.push('与另外 ' + others.length + ' 人的选择不重样');
+    else parts.push('同类可行项已被占满，与另外 '
+      + others.filter(o => o.code === item.code).length + ' 人同款');
+  } else {
+    const low = cands.reduce((a, b) => a.kcal < b.kcal ? a : b);
+    if (low.code === item.code) parts.push('候选人里热量最低（' + item.kcal + 'kcal）');
+    else parts.push('比最低卡的' + low.name + '高 ' + (item.kcal - low.kcal)
+      + 'kcal，用来凑够不同主餐，免得整桌都是一模一样的低卡餐');
+  }
+  if (item.price <= budget / n * .85) {
+    parts.push('¥' + item.price.toFixed(2) + '，给共享小食留出了空间');
+  }
+  return parts.length ? parts.join('；') : '唯一可行项';
+}
+
+function finalize(assignments, shared, people, budget, st, codes) {
+  const n = people.length;
+  const mainT = r2(assignments.reduce((s, a) => s + a.item.price, 0));
+  const shareT = r2(shared.reduce((s, i) => s + i.price, 0));
+  const total = r2(mainT + shareT);
+  const shareKcal = shared.reduce((s, i) => s + i.kcal, 0);
+  const perShare = n ? Math.round(shareKcal / n) : 0;
+
+  const checks = [], per = [];
+  for (const a of assignments) {
+    const p = people.find(x => x.name === a.person);
+    const k = a.item.kcal + perShare;
+    per.push({ person: p.name, item_name: a.item.name, price: a.item.price, kcal: k });
+    if (p.kcal_max && k > p.kcal_max * 1.15) {
+      checks.push({ level: 'warn', msg: p.name + ' 主餐已达标，但均摊共享小食后约 ' + k + 'kcal，建议不分小食' });
+    }
+    if (p.avoid_meats.includes(a.item.meat)) {
+      checks.push({ level: 'error', msg: p.name + ' 分到 ' + a.item.name + '，违反忌口' });
+    }
+    if (p.no_spicy && a.item.spicy) {
+      checks.push({ level: 'error', msg: p.name + ' 分到辣味餐品 ' + a.item.name });
+    }
+    if (p.kcal_max && a.item.kcal > p.kcal_max) {
+      checks.push({ level: 'error', msg: p.name + ' 主餐 ' + a.item.kcal + 'kcal 超上限' });
+    }
+  }
+  if (total > budget) {
+    checks.push({ level: 'error', msg: '总价 ¥' + total.toFixed(2) + ' 超预算 ¥' + budget });
+  }
+  const unk = assignments.filter(a => a.item.meat === 'unknown').map(a => a.item.name);
+  if (unk.length) checks.push({ level: 'warn', msg: '肉类成分无法自动判定，下单前需复核：' + unk.join('、') });
+  const est = assignments.filter(a => a.item.kcal_source === 'estimate').map(a => a.item.name);
+  if (est.length) checks.push({ level: 'warn', msg: '热量为估算值，不可作为营养依据：' + est.join('、') });
+
+  return {
+    id: st.id, name: st.name, tagline: st.tagline,
+    valid: !checks.some(c => c.level === 'error'),
+    assignments, shared,
+    main_total: mainT, share_total: shareT, total,
+    budget, remaining: r2(budget - total),
+    unique_mains: new Set(codes).size,
+    total_kcal: Math.round(assignments.reduce((s, a) => s + a.item.kcal, 0) + shareKcal),
+    per_person: per, checks, share_kcal_each: perShare
+  };
+}
+
+function buildPlan(mains, pool, people, budget, stRaw, exclude) {
+  const n = people.length;
+  const st = Object.assign({}, stRaw);
+  if (st.min_unique > 1) st.min_unique = Math.min(st.min_unique, Math.max(1, n - 1));
+
+  const per = n ? budget * (1 - st.share_reserve) / n : budget;
+  const topK = n <= 6 ? 5 : 3;
+
+  const full = [];
+  for (const p of people) {
+    const cands = mains.filter(i => allowed(i, p) && !exclude.has(i.code));
+    if (!cands.length) {
+      return {
+        id: st.id, name: st.name, tagline: st.tagline, valid: false,
+        error: p.name + ' 在当前菜单下没有任何可行主餐',
+        assignments: [], shared: [], total: 0, checks: [], total_kcal: 0,
+        remaining: 0, unique_mains: 0, share_kcal_each: 0, budget
+      };
+    }
+    cands.sort((a, b) => preScore(b, p, st, per) - preScore(a, p, st, per));
+    full.push(cands);
+  }
+
+  const pools = full.map(c => c.slice(0, topK));
+  const shareTarget = n >= 3 ? st.share_count : 1;
+
+  let best = null;
+  for (const combo of product(pools)) {
+    const mainT = combo.reduce((s, i) => s + i.price, 0);
+    if (mainT > budget) continue;
+    // 套餐自带薯条饮料，再按满额配共享小食就是重复浪费
+    const cover = combo.filter(i => i.is_combo).length;
+    const eff = Math.max(1, shareTarget - cover);
+    const shared = pickShares(pool, r2(budget - mainT), eff, st, exclude)[0];
+    const total = r2(mainT + shared.reduce((s, i) => s + i.price, 0));
+    if (total > budget) continue;
+    const obj = objective(combo, shared, budget, st, people);
+    if (obj <= -1e8) continue;
+    if (!best || obj > best.obj) best = { obj, combo, shared, total };
+  }
+
+  if (!best) {
+    if (st.min_unique > 1) {
+      return buildPlan(mains, pool, people, budget,
+        Object.assign({}, st, { min_unique: 1 }), exclude);
+    }
+    return {
+      id: st.id, name: st.name, tagline: st.tagline, valid: false,
+      error: '预算 ¥' + budget + ' 下凑不出满足全部硬约束的组合',
+      assignments: [], shared: [], total: 0, checks: [], total_kcal: 0,
+      remaining: 0, unique_mains: 0, share_kcal_each: 0, budget
+    };
+  }
+
+  const combo = best.combo, shared = best.shared;
+  const codes = combo.map(i => i.code);
+  const assignments = combo.map((item, idx) => {
+    const others = combo.filter((_, j) => j !== idx);
+    return {
+      person: people[idx].name, item,
+      alternatives: full[idx].filter(c => c.code !== item.code).slice(0, 3),
+      reason: explain(st.id, item, people[idx], full[idx], others, budget, n)
+    };
+  });
+  return finalize(assignments, shared, people, budget, st, codes);
+}
+
+function comparePlans(plans) {
+  const ok = plans.filter(p => p.valid);
+  if (ok.length < 2) return [];
+  const cheap = ok.reduce((a, b) => a.total < b.total ? a : b);
+  const uniq = ok.reduce((a, b) => a.unique_mains > b.unique_mains ? a : b);
+  const kcal = ok.reduce((a, b) => a.total_kcal < b.total_kcal ? a : b);
+  return [
+    '方案 ' + cheap.id + ' 最便宜（¥' + cheap.total.toFixed(2) + '，主餐 ' + cheap.unique_mains + ' 种）',
+    '方案 ' + uniq.id + ' 最不重样（' + uniq.unique_mains + ' 种主餐，¥' + uniq.total.toFixed(2) + '）',
+    '方案 ' + kcal.id + ' 热量最低（约 ' + kcal.total_kcal + ' kcal，¥' + kcal.total.toFixed(2) + '）'
+  ];
+}
+
+function diagnose(plans, people, mains, budget) {
+  const tips = [];
+  const bad = plans.find(p => p.error);
+  if (bad) tips.push(bad.error);
+  if (!plans.some(p => p.valid)) {
+    let need = 0;
+    for (const p of people) {
+      const c = mains.filter(i => allowed(i, p));
+      need += c.length ? Math.min(...c.map(i => i.price)) : 0;
+    }
+    tips.push('该预算下无法满足全部硬约束；只求人人有主餐的最低预算约 ¥' + need.toFixed(2));
+    tips.push('可放宽的方向：提高预算 / 提高热量上限 / 换备货更全的门店');
+  }
+  return tips;
+}
+
+function solveAll(MENU, people, budget, exclude) {
+  exclude = exclude || new Set();
+  const items = MENU.items.filter(i => !exclude.has(i.code));
+  const mains = items.filter(i => MAIN_CATS.includes(i.category));
+  const pool = items.filter(i => SHARE_CATS.includes(i.category));
+  const plans = STRATEGIES.map(st => buildPlan(mains, pool, people, budget, st, exclude));
+  const ok = plans.filter(p => p.valid);
+  return {
+    budget, people, plans,
+    compare: comparePlans(plans),
+    diagnosis: diagnose(plans, people, mains, budget),
+    feasible_count: ok.length,
+    recommended: ok.length ? ok[0].id : null
+  };
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { solveAll, allowed, STRATEGIES, MAIN_CATS, SHARE_CATS, PLAN_VAR, MEAT_CN };
+}
+
+const E=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const MEAT_LABEL={beef:'牛肉',chicken:'鸡肉',fish:'鱼肉',pork:'猪肉'};
+
+function consChip(p){
+  const b=[];
+  if(p.avoid_meats&&p.avoid_meats.length){
+    if(p.avoid_meats.length===4) b.push('素食');
+    else b.push('不吃'+p.avoid_meats.map(m=>MEAT_LABEL[m]||m).join('/'));
+  }
+  if(p.no_spicy) b.push('不吃辣');
+  if(p.kcal_max) b.push('≤'+p.kcal_max+'kcal');
+  return {txt:b.join('、'),has:b.length>0};
+}
+
+function splitKcal(plan){
+  const main=plan.assignments.reduce((s,a)=>s+a.item.kcal,0);
+  const dessert=plan.shared.filter(s=>s.category==='dessert').reduce((s,i)=>s+i.kcal,0);
+  const share=plan.shared.reduce((s,i)=>s+i.kcal,0)-dessert;
+  return [main,share,dessert];
+}
+
+function renderChips(people){
+  return people.map(p=>{
+    const c=consChip(p);
+    return c.has
+      ? '<span class="chip">'+E(p.name)+' <i>'+E(c.txt)+'</i></span>'
+      : '<span class="chip">'+E(p.name)+' 无特殊要求</span>';
+  }).join('');
+}
+
+function renderMetrics(res,plans){
+  const ok=plans.filter(p=>p.valid);
+  if(!ok.length) return '<div class="metrics"><div class="mlabel">当前条件下无可行方案</div></div>';
+  const rows=[
+    ['总价',p=>p.total,v=>'¥'+v.toFixed(2)],
+    ['整桌热量',p=>p.total_kcal,v=>v+' kcal'],
+    ['主餐种类',p=>p.unique_mains,v=>v+' 种'],
+    ['预算结余',p=>p.remaining,v=>'¥'+v.toFixed(2)]
+  ];
+  return '<div class="metrics">'+rows.map(([label,get,fmt])=>{
+    const max=Math.max(...ok.map(get))||1;
+    const bars=ok.map(p=>{
+      const pct=Math.max(6,Math.round(get(p)/max*100));
+      const v=PLAN_VAR[p.id]||'--cA';
+      return '<div class="mbar"><span class="mtag" style="color:var('+v+')">'+p.id+'</span>'
+        +'<div class="mtrack"><div class="mfill" style="width:'+pct+'%;background:var('+v+')"></div></div>'
+        +'<span class="mval">'+fmt(get(p))+'</span></div>';
+    }).join('');
+    return '<div class="mrow"><span class="mlabel">'+label+'</span><div class="mbars">'+bars+'</div></div>';
+  }).join('')+'</div>';
+}
+
+function renderPlans(res){
+  const plans=res.plans,people=res.people,budget=res.budget;
+  const ok=plans.filter(p=>p.valid);
+  const badges={};
+  if(ok.length){
+    const cheap=ok.reduce((a,b)=>a.total<b.total?a:b);
+    const uniq=ok.reduce((a,b)=>a.unique_mains>b.unique_mains?a:b);
+    const kcal=ok.reduce((a,b)=>a.total_kcal<b.total_kcal?a:b);
+    badges[cheap.id]=['最便宜','#EAF3DE','#27500A','#C0DD97'];
+    badges[uniq.id]=['最不重样','#FCEBEB','#791F1F','#F7C1C1'];
+    badges[kcal.id]=['热量最低','#E1F5EE','#085041','#9FE1CB'];
+  }
+  const maxKcal=Math.max(1,...ok.map(p=>p.total_kcal));
+
+  return plans.map(plan=>{
+    const v=PLAN_VAR[plan.id]||'--cA';
+    const bd=badges[plan.id];
+    const badge=bd?'<span class="plan-badge" style="background:'+bd[1]+';color:'+bd[2]
+      +';border:1px solid '+bd[3]+'">'+bd[0]+'</span>':'';
+    const head='<div class="plan-head" style="border-top:3px solid var('+v+')">'
+      +'<div class="plan-name"><span class="dot" style="background:var('+v+')"></span>'
+      +'方案 '+E(plan.id)+' · '+E(plan.name)+'</div>'
+      +'<div class="plan-desc">'+E(plan.tagline)+'</div>'+badge+'</div>';
+
+    if(plan.error) return '<div class="plan">'+head
+      +'<div class="price-box"><div class="preason">'+E(plan.error)+'</div></div></div>';
+
+    const price='<div class="price-box"><div class="big">¥'+plan.total.toFixed(2)
+      +'<small>/ 预算 ¥'+budget.toFixed(0)+'</small></div>'
+      +'<div class="subrow"><span>结余 <b>¥'+plan.remaining.toFixed(2)+'</b></span>'
+      +'<span>主餐 <b>'+plan.unique_mains+'</b> 种</span>'
+      +'<span>共 <b>'+(1+plan.shared.length)+'</b> 件</span></div></div>';
+
+    const [km,ks,kd]=splitKcal(plan);
+    const totalK=km+ks+kd;
+    const barW=Math.max(8,Math.round(totalK/maxKcal*100));
+    let segs='<div class="seg main" style="flex:'+Math.max(km,0)+'"></div>';
+    if(ks>0) segs+='<div class="seg share" style="flex:'+ks+'"></div>';
+    if(kd>0) segs+='<div class="seg dessert" style="flex:'+kd+'"></div>';
+    let legend='<span><i class="lm"></i>主餐 <em>'+km+'</em></span>';
+    if(ks>0) legend+='<span><i class="ls"></i>小食饮料 <em>'+ks+'</em></span>';
+    legend+= kd>0
+      ? '<span><i class="ld"></i>甜点 <em>'+kd+'</em></span>'
+      : '<span class="nodessert">未配甜点</span>';
+    const stack='<div class="stackbox" style="--pc:var('+v+')">'
+      +'<div class="stack-head"><span>整桌热量分解</span><span><b>'+totalK+'</b> kcal</span></div>'
+      +'<div class="stack" style="width:'+barW+'%">'+segs+'</div>'
+      +'<div class="legend">'+legend+'</div></div>';
+
+    const rows=plan.assignments.map(a=>{
+      const p=people.find(x=>x.name===a.person)||{};
+      const c=consChip(p);
+      const con=c.has?'<span class="pcon">'+E(c.txt)+'</span>'
+                     :'<span class="pcon none">无要求</span>';
+      return '<div class="prow"><div class="pwho"><span class="pname">'+E(a.person)+'</span>'+con+'</div>'
+        +'<div class="pitem"><span class="pdish">'+E(a.item.name)+'</span>'
+        +'<span class="pnum">¥'+a.item.price.toFixed(2)+' · '+a.item.kcal+'kcal</span></div>'
+        +'<div class="preason">'+E(a.reason)+'</div></div>';
+    }).join('');
+
+    let shared='';
+    if(plan.shared.length){
+      const items=plan.shared.map(s=>E(s.name)+' ¥'+s.price.toFixed(2)).join(' ・ ');
+      shared='<div class="shared"><div class="sl">共享小食（'+plan.shared.length+' 份，人均分摊约 '
+        +plan.share_kcal_each+' kcal）</div><div class="sv">'+items+'</div></div>';
+    }
+
+    let altGroups='',altTotal=0;
+    for(const a of plan.assignments){
+      const alts=a.alternatives||[];
+      if(!alts.length) continue;
+      const cur=a.item;
+      const lines=alts.map(t=>{
+        altTotal++;
+        const dp=t.price-cur.price,dk=t.kcal-cur.kcal;
+        const cp=dp>0?'up':(dp<0?'down':''),ck=dk>0?'up':(dk<0?'down':'');
+        return '<div class="alt-item"><span>'+E(t.name)+'</span><span class="d">¥'+t.price.toFixed(2)
+          +' <span class="'+cp+'">'+(Math.abs(dp)<1e-9?'±0':(dp>0?'+':'')+dp.toFixed(2))+'</span>　'
+          +t.kcal+'kcal <span class="'+ck+'">'+(dk===0?'±0':(dk>0?'+':'')+dk)+'</span></span></div>';
+      }).join('');
+      altGroups+='<div class="alt-group"><div class="alt-who"><b>'+E(a.person)+'</b> 现选 '
+        +E(cur.name)+' ¥'+cur.price.toFixed(2)+'</div>'+lines+'</div>';
+    }
+    const alts=altTotal
+      ? '<details class="alts"><summary>展开全部备选菜品（'+altTotal+' 个，标注换菜价差与热量差）</summary>'
+        +'<div class="alt-body">'+altGroups+'</div></details>'
+      : '';
+
+    const errs=plan.checks.filter(c=>c.level==='error').map(c=>E(c.msg));
+    const warns=plan.checks.filter(c=>c.level==='warn').map(c=>E(c.msg));
+    let checks='';
+    if(errs.length) checks+='<div class="checks err">'+errs.join('<br>')+'</div>';
+    if(warns.length) checks+='<div class="checks warn">'+warns.join('<br>')+'</div>';
+
+    return '<div class="plan">'+head+price+stack+'<div class="people">'+rows+'</div>'
+      +shared+alts+checks+'</div>';
+  }).join('');
+}
+
+function renderConcl(res){
+  let h=res.compare.map(c=>'<div>'+E(c)+'</div>').join('');
+  if(res.diagnosis&&res.diagnosis.length)
+    h+=res.diagnosis.map(d=>'<div style="background:var(--warn-bg);border-color:var(--warn-line);'
+      +'color:var(--warn-fg)">'+E(d)+'</div>').join('');
+  return h;
+}
+
+/* ---------------- 调节台 ---------------- */
+const DEPTS=[
+  {key:'chenBeef',name:'陈昊',label:'陈昊也不吃牛肉',on:p=>{p.avoid_meats.push('beef')},
+   avail:people=>people.some(p=>p.name==='陈昊')},
+  {key:'liSpicy',name:'李婷',label:'李婷其实能吃微辣',on:p=>{p.no_spicy=false},
+   avail:people=>people.some(p=>p.name==='李婷'&&p.no_spicy)},
+  {key:'zhangStrict',name:'张敏',label:'张敏收紧到 500kcal',on:p=>{p.kcal_max=500},
+   avail:people=>people.some(p=>p.name==='张敏')}
+];
+
+function deriveState(){
+  const people=JSON.parse(JSON.stringify(PEOPLE_INIT));
+  for(const d of DEPTS){
+    if(!UI[d.key]) continue;
+    const p=people.find(x=>x.name===d.name);
+    if(p) d.on(p);
+  }
+  return {people,budget:UI.budget};
+}
+
+function renderAll(){
+  const {people,budget}=deriveState();
+  const res=solveAll(MENU,people,budget);
+  document.getElementById('chips').innerHTML=renderChips(people);
+  document.getElementById('metrics').innerHTML=renderMetrics(res,res.plans);
+  const box=document.getElementById('plans');
+  box.innerHTML=renderPlans(res);
+  box.classList.remove('fade'); void box.offsetWidth; box.classList.add('fade');
+  document.getElementById('concl').innerHTML=renderConcl(res);
+  const n=document.getElementById('fcount');
+  if(n) n.textContent=res.feasible_count+' / 3 套可行';
+}
+
+function buildControls(){
+  const wrap=document.getElementById('ctrls');
+  const html=[];
+  for(const d of DEPTS){
+    if(!d.avail(PEOPLE_INIT)) continue;
+    html.push('<label class="sw'+(UI[d.key]?' on':'')+'" data-k="'+d.key+'">'
+      +'<input type="checkbox" '+(UI[d.key]?'checked':'')+' data-k="'+d.key+'">'
+      +E(d.label)+'</label>');
+  }
+  const opts=BUDGET_OPTS.map(b=>'<button data-b="'+b+'"'
+    +(Math.abs(b-UI.budget)<1e-9?' class="on"':'')+'>¥'+b+'</button>').join('');
+  html.push('<div class="seg"><span class="lb" style="padding:8px 6px 8px 12px">预算</span>'+opts+'</div>');
+  wrap.innerHTML=html.join('');
+
+  wrap.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('change',()=>{
+      UI[cb.dataset.k]=cb.checked;
+      cb.closest('.sw').classList.toggle('on',cb.checked);
+      renderAll();
+    });
+  });
+  wrap.querySelectorAll('.seg button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      UI.budget=parseFloat(btn.dataset.b);
+      wrap.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b===btn));
+      renderAll();
+    });
+  });
+}
+
+/* ---------------- baseline 校验 ---------------- */
+function checkBaseline(){
+  try{
+    const res=solveAll(MENU,PEOPLE_INIT,BUDGET_INIT);
+    const msgs=[];
+    for(const id of Object.keys(BASELINE)){
+      const jp=res.plans.find(p=>p.id===id), py=BASELINE[id];
+      if(!jp){msgs.push(id+': JS 缺失');continue;}
+      if(Math.abs(jp.total-py.total)>0.01) msgs.push(id+' 总价 JS='+jp.total+' Python='+py.total);
+      if(jp.unique_mains!==py.unique_mains) msgs.push(id+' 种类 JS='+jp.unique_mains+' Python='+py.unique_mains);
+      if(jp.total_kcal!==py.total_kcal) msgs.push(id+' 热量 JS='+jp.total_kcal+' Python='+py.total_kcal);
+    }
+    if(msgs.length){
+      console.warn('[FoodPilot] JS 求解器与 Python 输出不一致：',msgs);
+      const dev=document.getElementById('dev');
+      if(dev) dev.textContent='⚠ 求解器漂移：'+msgs.join('；');
+    }
+  }catch(e){console.warn('[FoodPilot] baseline 校验异常',e);}
+}
+
+/* ---------------- 主题 / 演示模式 / 粒子 ---------------- */
+(function(){
+  const root=document.documentElement;
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  const saved=read('fp-theme');
+  root.setAttribute('data-theme',saved||(mq.matches?'dark':'light'));
+  document.getElementById('themebtn').addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next); store('fp-theme',next);
+  });
+  mq.addEventListener('change',e=>{ if(!read('fp-theme')) root.setAttribute('data-theme',e.matches?'dark':'light'); });
+
+  if(read('fp-present')==='on') root.setAttribute('data-present','on');
+  const pb=document.getElementById('presentbtn');
+  function syncPresent(){
+    const on=root.getAttribute('data-present')==='on';
+    pb.querySelector('span').textContent=on?'退出演示':'演示模式';
+  }
+  syncPresent();
+  pb.addEventListener('click',()=>{
+    const on=root.getAttribute('data-present')==='on';
+    if(on){root.removeAttribute('data-present');store('fp-present','off');}
+    else{root.setAttribute('data-present','on');store('fp-present','on');}
+    syncPresent();
+  });
+
+  const cvs=document.getElementById('bg'),ctx=cvs.getContext('2d');
+  let W=0,H=0,ps=[],N=400,LINK=118,LINK2=LINK*LINK,IS_DARK=false;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth;H=window.innerHeight;
+    cvs.width=Math.floor(W*dpr);cvs.height=Math.floor(H*dpr);
+    cvs.style.width=W+'px';cvs.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function seed(){
+    ps=[];
+    for(let i=0;i<N;i++) ps.push({x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.20,vy:(Math.random()-.5)*.20,
+      r:Math.random()*1.5+.7,a:Math.random()*.55+.3});
+  }
+  function frame(){
+    IS_DARK=root.getAttribute('data-theme')==='dark';
+    ctx.clearRect(0,0,W,H);
+    const rgb=IS_DARK?'255,255,255':'28,28,26';
+    const dotA=IS_DARK?.42:.30, lineK=IS_DARK?.10:.07;
+    for(let i=0;i<ps.length;i++){
+      const p=ps[i];
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-12)p.x=W+12;else if(p.x>W+12)p.x=-12;
+      if(p.y<-12)p.y=H+12;else if(p.y>H+12)p.y=-12;
+      for(let j=i+1;j<ps.length&&j<i+16;j++){
+        const q=ps[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<LINK2){
+          ctx.strokeStyle='rgba('+rgb+','+((1-d2/LINK2)*lineK).toFixed(3)+')';
+          ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba('+rgb+','+(p.a*dotA).toFixed(3)+')';
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.2832);ctx.fill();
+    }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  resize();seed();frame();
+  let rt;
+  window.addEventListener('resize',()=>{
+    clearTimeout(rt);
+    rt=setTimeout(()=>{resize();seed();if(reduce){ctx.clearRect(0,0,W,H);frame();}},180);
+  });
+})();
+
+/* ---------------- 启动 ---------------- */
+const UI={chenBeef:false,liSpicy:false,zhangStrict:false,budget:BUDGET_INIT};
+buildControls();
+renderAll();
+checkBaseline();
+</script>
+</body></html>

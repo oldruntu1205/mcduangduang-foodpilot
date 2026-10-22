@@ -1,0 +1,207 @@
+{
+  "items": [
+    {
+      "code": "9900006233",
+      "name": "大堡口福四件套(双层脆鸡堡)",
+      "price": 34.9,
+      "kcal": 880,
+      "kcal_source": "api",
+      "category": "combo",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": true
+    },
+    {
+      "code": "9900006234",
+      "name": "巨无霸四件套",
+      "price": 39.9,
+      "kcal": 980,
+      "kcal_source": "api",
+      "category": "combo",
+      "meat": "beef",
+      "spicy": false,
+      "is_combo": true
+    },
+    {
+      "code": "9900006235",
+      "name": "麦辣鸡腿堡套餐",
+      "price": 36.9,
+      "kcal": 950,
+      "kcal_source": "api",
+      "category": "combo",
+      "meat": "chicken",
+      "spicy": true,
+      "is_combo": true
+    },
+    {
+      "code": "9900006236",
+      "name": "板烧鸡腿堡套餐",
+      "price": 36.5,
+      "kcal": 900,
+      "kcal_source": "api",
+      "category": "combo",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": true
+    },
+    {
+      "code": "9900006241",
+      "name": "巨无霸",
+      "price": 25.5,
+      "kcal": 550,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "beef",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006242",
+      "name": "双层吉士堡",
+      "price": 23.0,
+      "kcal": 450,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "beef",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006243",
+      "name": "麦辣鸡腿堡",
+      "price": 24.5,
+      "kcal": 520,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "chicken",
+      "spicy": true,
+      "is_combo": false
+    },
+    {
+      "code": "9900006244",
+      "name": "板烧鸡腿堡",
+      "price": 24.0,
+      "kcal": 470,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006245",
+      "name": "麦香鱼",
+      "price": 18.0,
+      "kcal": 340,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "fish",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006246",
+      "name": "脆鸡排蛋堡",
+      "price": 16.0,
+      "kcal": 400,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006247",
+      "name": "那么大鸡排",
+      "price": 22.0,
+      "kcal": 480,
+      "kcal_source": "api",
+      "category": "main",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006251",
+      "name": "中薯条",
+      "price": 11.5,
+      "kcal": 340,
+      "kcal_source": "api",
+      "category": "side",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006252",
+      "name": "麦乐鸡(5块)",
+      "price": 13.5,
+      "kcal": 230,
+      "kcal_source": "api",
+      "category": "side",
+      "meat": "chicken",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006253",
+      "name": "玉米杯",
+      "price": 9.0,
+      "kcal": 120,
+      "kcal_source": "api",
+      "category": "veg",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006254",
+      "name": "蔬菜沙拉",
+      "price": 12.0,
+      "kcal": 90,
+      "kcal_source": "api",
+      "category": "veg",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006255",
+      "name": "可口可乐(中)",
+      "price": 9.0,
+      "kcal": 150,
+      "kcal_source": "api",
+      "category": "drink",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006256",
+      "name": "无糖可乐(中)",
+      "price": 9.0,
+      "kcal": 0,
+      "kcal_source": "api",
+      "category": "drink",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    },
+    {
+      "code": "9900006257",
+      "name": "麦旋风(奥利奥)",
+      "price": 13.0,
+      "kcal": 280,
+      "kcal_source": "api",
+      "category": "dessert",
+      "meat": "unknown",
+      "spicy": false,
+      "is_combo": false
+    }
+  ],
+  "warnings": [],
+  "stats": {
+    "count": 18,
+    "main_like": 11
+  }
+}

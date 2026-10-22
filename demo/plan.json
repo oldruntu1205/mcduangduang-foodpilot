@@ -1,0 +1,1090 @@
+{
+  "budget": 160.0,
+  "people": [
+    {
+      "name": "王磊",
+      "avoid_meats": [
+        "beef"
+      ],
+      "no_spicy": false,
+      "kcal_max": null
+    },
+    {
+      "name": "李婷",
+      "avoid_meats": [],
+      "no_spicy": true,
+      "kcal_max": null
+    },
+    {
+      "name": "张敏",
+      "avoid_meats": [],
+      "no_spicy": false,
+      "kcal_max": 600
+    },
+    {
+      "name": "陈昊",
+      "avoid_meats": [],
+      "no_spicy": false,
+      "kcal_max": null
+    },
+    {
+      "name": "赵宇",
+      "avoid_meats": [],
+      "no_spicy": false,
+      "kcal_max": null
+    }
+  ],
+  "plans": [
+    {
+      "id": "A",
+      "name": "最省钱",
+      "tagline": "压住总价，但至少保住 3 种主餐",
+      "valid": true,
+      "assignments": [
+        {
+          "person": "王磊",
+          "person_label": "王磊（不吃牛肉）",
+          "item": {
+            "code": "9900006246",
+            "name": "脆鸡排蛋堡",
+            "price": 16.0,
+            "kcal": 400,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006245",
+              "name": "麦香鱼",
+              "price": 18.0,
+              "kcal": 340,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "fish",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "避开牛肉，该店只筛出 8 项可选；他名下最低价 ¥16.00，压总价就靠这一档；¥16.00，给共享小食留出了空间"
+        },
+        {
+          "person": "李婷",
+          "person_label": "李婷（不吃辣）",
+          "item": {
+            "code": "9900006246",
+            "name": "脆鸡排蛋堡",
+            "price": 16.0,
+            "kcal": 400,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006245",
+              "name": "麦香鱼",
+              "price": 18.0,
+              "kcal": 340,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "fish",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "不辣，该店只筛出 9 项可选；他名下最低价 ¥16.00，压总价就靠这一档；¥16.00，给共享小食留出了空间"
+        },
+        {
+          "person": "张敏",
+          "person_label": "张敏（主餐≤600kcal）",
+          "item": {
+            "code": "9900006246",
+            "name": "脆鸡排蛋堡",
+            "price": 16.0,
+            "kcal": 400,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "400kcal 在 600 以内，该店只筛出 7 项可选；他名下最低价 ¥16.00，压总价就靠这一档；¥16.00，给共享小食留出了空间"
+        },
+        {
+          "person": "陈昊",
+          "person_label": "陈昊",
+          "item": {
+            "code": "9900006247",
+            "name": "那么大鸡排",
+            "price": 22.0,
+            "kcal": 480,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006245",
+              "name": "麦香鱼",
+              "price": 18.0,
+              "kcal": 340,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "fish",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "比最低价的脆鸡排蛋堡贵 ¥6.00，用来凑够 3 种不同主餐，避免整桌一个味；¥22.00，给共享小食留出了空间"
+        },
+        {
+          "person": "赵宇",
+          "person_label": "赵宇",
+          "item": {
+            "code": "9900006245",
+            "name": "麦香鱼",
+            "price": 18.0,
+            "kcal": 340,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "fish",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "比最低价的脆鸡排蛋堡贵 ¥2.00，用来凑够 3 种不同主餐，避免整桌一个味；¥18.00，给共享小食留出了空间"
+        }
+      ],
+      "shared": [
+        {
+          "code": "9900006251",
+          "name": "中薯条",
+          "price": 11.5,
+          "kcal": 340,
+          "kcal_source": "api",
+          "category": "side",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006253",
+          "name": "玉米杯",
+          "price": 9.0,
+          "kcal": 120,
+          "kcal_source": "api",
+          "category": "veg",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006256",
+          "name": "无糖可乐(中)",
+          "price": 9.0,
+          "kcal": 0,
+          "kcal_source": "api",
+          "category": "drink",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        }
+      ],
+      "main_total": 88.0,
+      "share_total": 29.5,
+      "total": 117.5,
+      "budget": 160.0,
+      "remaining": 42.5,
+      "unique_mains": 3,
+      "total_kcal": 2480,
+      "per_person": [
+        {
+          "person": "王磊",
+          "item_name": "脆鸡排蛋堡",
+          "item_code": "9900006246",
+          "price": 16.0,
+          "kcal": 492
+        },
+        {
+          "person": "李婷",
+          "item_name": "脆鸡排蛋堡",
+          "item_code": "9900006246",
+          "price": 16.0,
+          "kcal": 492
+        },
+        {
+          "person": "张敏",
+          "item_name": "脆鸡排蛋堡",
+          "item_code": "9900006246",
+          "price": 16.0,
+          "kcal": 492
+        },
+        {
+          "person": "陈昊",
+          "item_name": "那么大鸡排",
+          "item_code": "9900006247",
+          "price": 22.0,
+          "kcal": 572
+        },
+        {
+          "person": "赵宇",
+          "item_name": "麦香鱼",
+          "item_code": "9900006245",
+          "price": 18.0,
+          "kcal": 432
+        }
+      ],
+      "checks": [],
+      "share_kcal_each": 92.0
+    },
+    {
+      "id": "B",
+      "name": "最不重样",
+      "tagline": "五个人吃到尽量不同的主餐",
+      "valid": true,
+      "assignments": [
+        {
+          "person": "王磊",
+          "person_label": "王磊（不吃牛肉）",
+          "item": {
+            "code": "9900006246",
+            "name": "脆鸡排蛋堡",
+            "price": 16.0,
+            "kcal": 400,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006243",
+              "name": "麦辣鸡腿堡",
+              "price": 24.5,
+              "kcal": 520,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": true,
+              "is_combo": false
+            }
+          ],
+          "reason": "避开牛肉，该店只筛出 8 项可选；与另外 4 人的选择不重样；¥16.00，给共享小食留出了空间"
+        },
+        {
+          "person": "李婷",
+          "person_label": "李婷（不吃辣）",
+          "item": {
+            "code": "9900006245",
+            "name": "麦香鱼",
+            "price": 18.0,
+            "kcal": 340,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "fish",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "不辣，该店只筛出 9 项可选；与另外 4 人的选择不重样；¥18.00，给共享小食留出了空间"
+        },
+        {
+          "person": "张敏",
+          "person_label": "张敏（主餐≤600kcal）",
+          "item": {
+            "code": "9900006242",
+            "name": "双层吉士堡",
+            "price": 23.0,
+            "kcal": 450,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "beef",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006243",
+              "name": "麦辣鸡腿堡",
+              "price": 24.5,
+              "kcal": 520,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": true,
+              "is_combo": false
+            }
+          ],
+          "reason": "450kcal 在 600 以内，该店只筛出 7 项可选；与另外 4 人的选择不重样；¥23.00，给共享小食留出了空间"
+        },
+        {
+          "person": "陈昊",
+          "person_label": "陈昊",
+          "item": {
+            "code": "9900006244",
+            "name": "板烧鸡腿堡",
+            "price": 24.0,
+            "kcal": 470,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006243",
+              "name": "麦辣鸡腿堡",
+              "price": 24.5,
+              "kcal": 520,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": true,
+              "is_combo": false
+            }
+          ],
+          "reason": "与另外 4 人的选择不重样；¥24.00，给共享小食留出了空间"
+        },
+        {
+          "person": "赵宇",
+          "person_label": "赵宇",
+          "item": {
+            "code": "9900006247",
+            "name": "那么大鸡排",
+            "price": 22.0,
+            "kcal": 480,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006243",
+              "name": "麦辣鸡腿堡",
+              "price": 24.5,
+              "kcal": 520,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": true,
+              "is_combo": false
+            }
+          ],
+          "reason": "与另外 4 人的选择不重样；¥22.00，给共享小食留出了空间"
+        }
+      ],
+      "shared": [
+        {
+          "code": "9900006253",
+          "name": "玉米杯",
+          "price": 9.0,
+          "kcal": 120,
+          "kcal_source": "api",
+          "category": "veg",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006251",
+          "name": "中薯条",
+          "price": 11.5,
+          "kcal": 340,
+          "kcal_source": "api",
+          "category": "side",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006256",
+          "name": "无糖可乐(中)",
+          "price": 9.0,
+          "kcal": 0,
+          "kcal_source": "api",
+          "category": "drink",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006257",
+          "name": "麦旋风(奥利奥)",
+          "price": 13.0,
+          "kcal": 280,
+          "kcal_source": "api",
+          "category": "dessert",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        }
+      ],
+      "main_total": 103.0,
+      "share_total": 42.5,
+      "total": 145.5,
+      "budget": 160.0,
+      "remaining": 14.5,
+      "unique_mains": 5,
+      "total_kcal": 2880,
+      "per_person": [
+        {
+          "person": "王磊",
+          "item_name": "脆鸡排蛋堡",
+          "item_code": "9900006246",
+          "price": 16.0,
+          "kcal": 548
+        },
+        {
+          "person": "李婷",
+          "item_name": "麦香鱼",
+          "item_code": "9900006245",
+          "price": 18.0,
+          "kcal": 488
+        },
+        {
+          "person": "张敏",
+          "item_name": "双层吉士堡",
+          "item_code": "9900006242",
+          "price": 23.0,
+          "kcal": 598
+        },
+        {
+          "person": "陈昊",
+          "item_name": "板烧鸡腿堡",
+          "item_code": "9900006244",
+          "price": 24.0,
+          "kcal": 618
+        },
+        {
+          "person": "赵宇",
+          "item_name": "那么大鸡排",
+          "item_code": "9900006247",
+          "price": 22.0,
+          "kcal": 628
+        }
+      ],
+      "checks": [],
+      "share_kcal_each": 148.0
+    },
+    {
+      "id": "C",
+      "name": "最低热量",
+      "tagline": "整桌摄入最小，低卡的人优先满足，不配甜点",
+      "valid": true,
+      "assignments": [
+        {
+          "person": "王磊",
+          "person_label": "王磊（不吃牛肉）",
+          "item": {
+            "code": "9900006245",
+            "name": "麦香鱼",
+            "price": 18.0,
+            "kcal": 340,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "fish",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006246",
+              "name": "脆鸡排蛋堡",
+              "price": 16.0,
+              "kcal": 400,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "避开牛肉，该店只筛出 8 项可选；候选人里热量最低（340kcal）；¥18.00，给共享小食留出了空间"
+        },
+        {
+          "person": "李婷",
+          "person_label": "李婷（不吃辣）",
+          "item": {
+            "code": "9900006245",
+            "name": "麦香鱼",
+            "price": 18.0,
+            "kcal": 340,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "fish",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "不辣，该店只筛出 9 项可选；候选人里热量最低（340kcal）；¥18.00，给共享小食留出了空间"
+        },
+        {
+          "person": "张敏",
+          "person_label": "张敏（主餐≤600kcal）",
+          "item": {
+            "code": "9900006245",
+            "name": "麦香鱼",
+            "price": 18.0,
+            "kcal": 340,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "fish",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "340kcal 在 600 以内，该店只筛出 7 项可选；候选人里热量最低（340kcal）；¥18.00，给共享小食留出了空间"
+        },
+        {
+          "person": "陈昊",
+          "person_label": "陈昊",
+          "item": {
+            "code": "9900006242",
+            "name": "双层吉士堡",
+            "price": 23.0,
+            "kcal": 450,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "beef",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006245",
+              "name": "麦香鱼",
+              "price": 18.0,
+              "kcal": 340,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "fish",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006244",
+              "name": "板烧鸡腿堡",
+              "price": 24.0,
+              "kcal": 470,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "比最低卡的麦香鱼高 110kcal，用来凑够不同主餐，免得整桌都是一模一样的低卡餐；¥23.00，给共享小食留出了空间"
+        },
+        {
+          "person": "赵宇",
+          "person_label": "赵宇",
+          "item": {
+            "code": "9900006246",
+            "name": "脆鸡排蛋堡",
+            "price": 16.0,
+            "kcal": 400,
+            "kcal_source": "api",
+            "category": "main",
+            "meat": "chicken",
+            "spicy": false,
+            "is_combo": false
+          },
+          "alternatives": [
+            {
+              "code": "9900006245",
+              "name": "麦香鱼",
+              "price": 18.0,
+              "kcal": 340,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "fish",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006247",
+              "name": "那么大鸡排",
+              "price": 22.0,
+              "kcal": 480,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "chicken",
+              "spicy": false,
+              "is_combo": false
+            },
+            {
+              "code": "9900006242",
+              "name": "双层吉士堡",
+              "price": 23.0,
+              "kcal": 450,
+              "kcal_source": "api",
+              "category": "main",
+              "meat": "beef",
+              "spicy": false,
+              "is_combo": false
+            }
+          ],
+          "reason": "比最低卡的麦香鱼高 60kcal，用来凑够不同主餐，免得整桌都是一模一样的低卡餐；¥16.00，给共享小食留出了空间"
+        }
+      ],
+      "shared": [
+        {
+          "code": "9900006254",
+          "name": "蔬菜沙拉",
+          "price": 12.0,
+          "kcal": 90,
+          "kcal_source": "api",
+          "category": "veg",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006256",
+          "name": "无糖可乐(中)",
+          "price": 9.0,
+          "kcal": 0,
+          "kcal_source": "api",
+          "category": "drink",
+          "meat": "unknown",
+          "spicy": false,
+          "is_combo": false
+        },
+        {
+          "code": "9900006252",
+          "name": "麦乐鸡(5块)",
+          "price": 13.5,
+          "kcal": 230,
+          "kcal_source": "api",
+          "category": "side",
+          "meat": "chicken",
+          "spicy": false,
+          "is_combo": false
+        }
+      ],
+      "main_total": 93.0,
+      "share_total": 34.5,
+      "total": 127.5,
+      "budget": 160.0,
+      "remaining": 32.5,
+      "unique_mains": 3,
+      "total_kcal": 2190,
+      "per_person": [
+        {
+          "person": "王磊",
+          "item_name": "麦香鱼",
+          "item_code": "9900006245",
+          "price": 18.0,
+          "kcal": 404
+        },
+        {
+          "person": "李婷",
+          "item_name": "麦香鱼",
+          "item_code": "9900006245",
+          "price": 18.0,
+          "kcal": 404
+        },
+        {
+          "person": "张敏",
+          "item_name": "麦香鱼",
+          "item_code": "9900006245",
+          "price": 18.0,
+          "kcal": 404
+        },
+        {
+          "person": "陈昊",
+          "item_name": "双层吉士堡",
+          "item_code": "9900006242",
+          "price": 23.0,
+          "kcal": 514
+        },
+        {
+          "person": "赵宇",
+          "item_name": "脆鸡排蛋堡",
+          "item_code": "9900006246",
+          "price": 16.0,
+          "kcal": 464
+        }
+      ],
+      "checks": [],
+      "share_kcal_each": 64.0
+    }
+  ],
+  "recommended": "A",
+  "feasible_count": 3,
+  "compare": [
+    "方案 A 最便宜（¥117.50，主餐 3 种）",
+    "方案 B 最不重样（5 种主餐，¥145.50）",
+    "方案 C 热量最低（约 2190 kcal，¥127.50）"
+  ],
+  "diagnosis": []
+}

@@ -1,0 +1,22 @@
+[
+  {"mealCode": "9900006233", "mealName": "大堡口福四件套(双层脆鸡堡)", "price": 3490, "categoryName": "超值套餐", "energy": 880},
+  {"mealCode": "9900006234", "mealName": "巨无霸四件套", "price": 3990, "categoryName": "超值套餐", "energy": 980},
+  {"mealCode": "9900006235", "mealName": "麦辣鸡腿堡套餐", "price": 3690, "categoryName": "超值套餐", "energy": 950},
+  {"mealCode": "9900006236", "mealName": "板烧鸡腿堡套餐", "price": 3650, "categoryName": "超值套餐", "energy": 900},
+
+  {"productCode": "9900006241", "productName": "巨无霸", "salePrice": 2550, "energy": 550},
+  {"productCode": "9900006242", "productName": "双层吉士堡", "salePrice": 2300, "energy": 450},
+  {"productCode": "9900006243", "productName": "麦辣鸡腿堡", "salePrice": 2450, "energy": 520},
+  {"productCode": "9900006244", "productName": "板烧鸡腿堡", "salePrice": 2400, "energy": 470},
+  {"productCode": "9900006245", "productName": "麦香鱼", "salePrice": 1800, "energy": 340},
+  {"productCode": "9900006246", "productName": "脆鸡排蛋堡", "salePrice": 1600, "energy": 400},
+  {"productCode": "9900006247", "productName": "那么大鸡排", "salePrice": 2200, "energy": 480},
+
+  {"productCode": "9900006251", "productName": "中薯条", "salePrice": 1150, "energy": 340},
+  {"productCode": "9900006252", "productName": "麦乐鸡(5块)", "salePrice": 1350, "energy": 230},
+  {"productCode": "9900006253", "productName": "玉米杯", "salePrice": 900, "energy": 120},
+  {"productCode": "9900006254", "productName": "蔬菜沙拉", "salePrice": 1200, "energy": 90},
+  {"productCode": "9900006255", "productName": "可口可乐(中)", "salePrice": 900, "energy": 150},
+  {"productCode": "9900006256", "productName": "无糖可乐(中)", "salePrice": 900, "energy": 0},
+  {"productCode": "9900006257", "productName": "麦旋风(奥利奥)", "salePrice": 1300, "energy": 280}
+]
