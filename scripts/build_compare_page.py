@@ -505,8 +505,10 @@ function checkBaseline(){
   function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
 
+  const qs=new URLSearchParams(location.search);
+  const qTheme=qs.get('theme');
   const mq=window.matchMedia('(prefers-color-scheme: dark)');
-  const saved=read('fp-theme');
+  const saved=qTheme||read('fp-theme');
   root.setAttribute('data-theme',saved||(mq.matches?'dark':'light'));
   document.getElementById('themebtn').addEventListener('click',()=>{
     const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -514,7 +516,7 @@ function checkBaseline(){
   });
   mq.addEventListener('change',e=>{ if(!read('fp-theme')) root.setAttribute('data-theme',e.matches?'dark':'light'); });
 
-  if(read('fp-present')==='on') root.setAttribute('data-present','on');
+  if(qs.get('present')==='1'||read('fp-present')==='on') root.setAttribute('data-present','on');
   const pb=document.getElementById('presentbtn');
   function syncPresent(){
     const on=root.getAttribute('data-present')==='on';

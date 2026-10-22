@@ -2,6 +2,8 @@
 
 > 把五个人的嘴，协调成一张能下单的单子。
 
+<img src="docs/images/compare-light.png" width="100%" alt="FoodPilot 方案对比页：三套方案的总价、整桌热量、主餐种类、预算结余四条横向指标，以及每套方案的热量三段堆叠条">
+
 > **参赛说明**：本仓库为麦当劳程序员节创意开发大赛参赛作品，由参赛者独立开发，**非麦当劳官方产品**。项目输出仅供参考，不构成医疗、营养或其他专业建议；餐品信息、价格及供应状态以麦当劳官方渠道的实时结果为准。参赛声明见 [CONTEST_DECLARATION.md](CONTEST_DECLARATION.md)（官方原文，未作任何修改）。
 
 多人点麦当劳的真实卡点不是「吃什么」，是**协调**：5 个人、160 元预算、一个不吃牛肉、一个不能吃辣、一个要控热量。谁来算？算完谁改？改完谁重算？
@@ -100,6 +102,13 @@ python build_compare_page.py plan.json --menu menu.json -o compare.html
 - **演示模式** —— 一键整体放大 18% 并收窄版心、隐藏脚注。3 分钟演示要投大屏，11.5px 的小字在后排是不存在的
 - **日夜双主题** —— 跟随系统偏好，也可手动切换并记忆
 - **400 粒子背景** —— canvas 绘制，轻量邻近连线，透明度压得很低，不干扰阅读
+
+<details>
+<summary>深色主题预览</summary>
+
+<img src="docs/images/compare-dark.png" width="100%" alt="深色主题下的对比页，粒子背景可见，三段分色的热量条依然清晰">
+
+</details>
 
 ### 两个求解器，靠测试保证不漂移
 
@@ -290,6 +299,8 @@ demo/menu_demo.json           归一化结果
 demo/replies_demo.txt         演示用群回复（故意不按格式）
 demo/plan.json                求解器输出快照
 demo/compare.html             生成好的对比页（双击即开，断网可用）
+docs/images/compare-light.png 对比页截图（README 顶部主图）
+docs/images/compare-dark.png  深色主题截图
 references/constraint-parser.md  中文约束解析规则与追问话术
 references/demo-script.md     3 分钟演示口播脚本
 ```

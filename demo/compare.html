@@ -248,7 +248,7 @@ html[data-present="on"] .plan-desc{min-height:0}
     同样五个人，配一份麦旋风就是 280kcal，占整桌的一成。C 方案直接不配。</p>
 </div>
 
-<footer>数据来源：首屏为 meal_solver.py 单次输出，交互重算由页面内嵌的同源求解器完成；两者启动时比对一次，不一致会在此处告警。演示菜单 18 项（离线快照）。生成时间 2026-10-22 13:13。<div class="dev" id="dev"></div></footer>
+<footer>数据来源：首屏为 meal_solver.py 单次输出，交互重算由页面内嵌的同源求解器完成；两者启动时比对一次，不一致会在此处告警。演示菜单 18 项（离线快照）。生成时间 2026-10-22 22:08。<div class="dev" id="dev"></div></footer>
 </div>
 <script>const MENU={"items": [{"code": "9900006233", "name": "大堡口福四件套(双层脆鸡堡)", "price": 34.9, "kcal": 880, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": false, "is_combo": true}, {"code": "9900006234", "name": "巨无霸四件套", "price": 39.9, "kcal": 980, "kcal_source": "api", "category": "combo", "meat": "beef", "spicy": false, "is_combo": true}, {"code": "9900006235", "name": "麦辣鸡腿堡套餐", "price": 36.9, "kcal": 950, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": true, "is_combo": true}, {"code": "9900006236", "name": "板烧鸡腿堡套餐", "price": 36.5, "kcal": 900, "kcal_source": "api", "category": "combo", "meat": "chicken", "spicy": false, "is_combo": true}, {"code": "9900006241", "name": "巨无霸", "price": 25.5, "kcal": 550, "kcal_source": "api", "category": "main", "meat": "beef", "spicy": false, "is_combo": false}, {"code": "9900006242", "name": "双层吉士堡", "price": 23.0, "kcal": 450, "kcal_source": "api", "category": "main", "meat": "beef", "spicy": false, "is_combo": false}, {"code": "9900006243", "name": "麦辣鸡腿堡", "price": 24.5, "kcal": 520, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": true, "is_combo": false}, {"code": "9900006244", "name": "板烧鸡腿堡", "price": 24.0, "kcal": 470, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006245", "name": "麦香鱼", "price": 18.0, "kcal": 340, "kcal_source": "api", "category": "main", "meat": "fish", "spicy": false, "is_combo": false}, {"code": "9900006246", "name": "脆鸡排蛋堡", "price": 16.0, "kcal": 400, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006247", "name": "那么大鸡排", "price": 22.0, "kcal": 480, "kcal_source": "api", "category": "main", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006251", "name": "中薯条", "price": 11.5, "kcal": 340, "kcal_source": "api", "category": "side", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006252", "name": "麦乐鸡(5块)", "price": 13.5, "kcal": 230, "kcal_source": "api", "category": "side", "meat": "chicken", "spicy": false, "is_combo": false}, {"code": "9900006253", "name": "玉米杯", "price": 9.0, "kcal": 120, "kcal_source": "api", "category": "veg", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006254", "name": "蔬菜沙拉", "price": 12.0, "kcal": 90, "kcal_source": "api", "category": "veg", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006255", "name": "可口可乐(中)", "price": 9.0, "kcal": 150, "kcal_source": "api", "category": "drink", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006256", "name": "无糖可乐(中)", "price": 9.0, "kcal": 0, "kcal_source": "api", "category": "drink", "meat": "unknown", "spicy": false, "is_combo": false}, {"code": "9900006257", "name": "麦旋风(奥利奥)", "price": 13.0, "kcal": 280, "kcal_source": "api", "category": "dessert", "meat": "unknown", "spicy": false, "is_combo": false}], "warnings": [], "stats": {"count": 18, "main_like": 11}};
 const PEOPLE_INIT=[{"name": "王磊", "avoid_meats": ["beef"], "no_spicy": false, "kcal_max": null}, {"name": "李婷", "avoid_meats": [], "no_spicy": true, "kcal_max": null}, {"name": "张敏", "avoid_meats": [], "no_spicy": false, "kcal_max": 600}, {"name": "陈昊", "avoid_meats": [], "no_spicy": false, "kcal_max": null}, {"name": "赵宇", "avoid_meats": [], "no_spicy": false, "kcal_max": null}];
@@ -811,8 +811,10 @@ function checkBaseline(){
   function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
 
+  const qs=new URLSearchParams(location.search);
+  const qTheme=qs.get('theme');
   const mq=window.matchMedia('(prefers-color-scheme: dark)');
-  const saved=read('fp-theme');
+  const saved=qTheme||read('fp-theme');
   root.setAttribute('data-theme',saved||(mq.matches?'dark':'light'));
   document.getElementById('themebtn').addEventListener('click',()=>{
     const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -820,7 +822,7 @@ function checkBaseline(){
   });
   mq.addEventListener('change',e=>{ if(!read('fp-theme')) root.setAttribute('data-theme',e.matches?'dark':'light'); });
 
-  if(read('fp-present')==='on') root.setAttribute('data-present','on');
+  if(qs.get('present')==='1'||read('fp-present')==='on') root.setAttribute('data-present','on');
   const pb=document.getElementById('presentbtn');
   function syncPresent(){
     const on=root.getAttribute('data-present')==='on';
