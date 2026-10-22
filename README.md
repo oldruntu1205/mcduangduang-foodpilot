@@ -275,6 +275,7 @@ python meal_solver.py --menu ../demo/menu_demo.json \
 SKILL.md                      Agent 行为规范（四阶段工作流 + 红线）
 CONTEST_DECLARATION.md        参赛声明（赛事官方原文，未作任何修改）
 MCP_INTEGRATION.md            麦当劳 MCP 集成说明（Server / Tool / 调用流程 / 业务价值）
+mcp-config.example.json       MCP 配置示例（脱敏，仅环境变量占位符）
 scripts/normalize_menu.py     菜单归一化（字段洗版 + 品类/肉类/辣度识别）
 scripts/meal_solver.py        求解器 Python 版（枚举 + 三目标 + 理由生成 + 校验）
 scripts/solver_core.js        求解器 JS 版（唯一源码，页面内嵌 / Node 测试共用同一份）
